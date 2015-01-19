@@ -5,8 +5,8 @@ import (
 )
 
 const (
-	defaultConfFile   string = "conf/gmzoo.ini"
-	defaultServerName string = "webserver"
+	defaultConfFile   string = "conf/yx.ini"
+	defaultServerName string = "yxserver"
 )
 
 var CurConfFile = defaultConfFile

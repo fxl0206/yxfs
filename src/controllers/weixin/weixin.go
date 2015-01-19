@@ -13,6 +13,12 @@ import (
 	"time"
 )
 
+//weixin Controller 请求路径
+var Prefix string = "/sign"
+var SignPrefix string = "/sign"
+var ActionPrefix string = "/action"
+
+//微信请求消息结构
 type Request struct {
 	ToUserName   string
 	FromUserName string
@@ -22,6 +28,7 @@ type Request struct {
 	MsgId        int
 }
 
+//微信响应头结构
 type Response struct {
 	ToUserName   string `xml:"xml>ToUserName"`
 	FromUserName string `xml:"xml>FromUserName"`
@@ -31,15 +38,12 @@ type Response struct {
 	MsgId        int    `xml:"xml>MsgId"`
 }
 
-var Prefix string = "/sign"
-
+//服务器Token认证
 func DoSign(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[len(Prefix):]
-	fmt.Println("你的token")
 	log.Println(path)
-	var token string = "你的token"
-	log.Println(token)
 	r.ParseForm()
+	token := "my tocken"
 	var signature string = strings.Join(r.Form["signature"], "")
 	var timestamp string = strings.Join(r.Form["timestamp"], "")
 	var nonce string = strings.Join(r.Form["nonce"], "")
@@ -47,14 +51,19 @@ func DoSign(w http.ResponseWriter, r *http.Request) {
 	tmps := []string{token, timestamp, nonce}
 	sort.Strings(tmps)
 	tmpStr := tmps[0] + tmps[1] + tmps[2]
-	log.Println(tmpStr)
 	tmp := str2sha1(tmpStr)
-
 	if tmp == signature {
+		log.Println("signature Success")
 		fmt.Fprintf(w, echostr)
+	} else {
+		log.Println("signature Failed!")
 	}
 }
-func action(w http.ResponseWriter, r *http.Request) {
+
+//消息处理
+func DoAction(w http.ResponseWriter, r *http.Request) {
+	log.Println("here")
+
 	postedMsg, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		log.Fatal(err)
@@ -78,6 +87,8 @@ func action(w http.ResponseWriter, r *http.Request) {
 			fmt.Printf("error:%v\n", err)
 		}
 		fmt.Fprintf(w, string(output))
+	} else {
+		log.Println("Something is Wrong!")
 	}
 }
 func str2sha1(data string) string {

@@ -2,11 +2,11 @@ package main
 
 import (
 	"conf"
-	"gmzoo.com/wbserver"
+	"yxfs.com/yxserver"
 )
 
 func main() {
 	conf.Initail()
-	server := wbserver.NewInstance(conf.CurConfFile, conf.CurServerName)
+	server := yxserver.NewInstance(conf.CurConfFile, conf.CurServerName)
 	server.Start()
 }
