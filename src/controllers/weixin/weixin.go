@@ -40,7 +40,7 @@ type Response struct {
 
 //服务器Token认证
 func DoSign(w http.ResponseWriter, r *http.Request) {
-	path := r.URL.Path[len(Prefix):]
+	path := r.URL.Path[len(SignPrefix):]
 	log.Println(path)
 	r.ParseForm()
 	token := "my tocken"
