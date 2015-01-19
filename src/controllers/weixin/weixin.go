@@ -14,7 +14,7 @@ import (
 )
 
 //weixin Controller 请求路径
-var Prefix string = "/sign"
+//var Prefix string = "/sign"
 var SignPrefix string = "/sign"
 var ActionPrefix string = "/action"
 
@@ -79,8 +79,7 @@ func DoAction(w http.ResponseWriter, r *http.Request) {
 		}
 		fmt.Fprintf(w, string(output))
 	} else if v.MsgType == "event" {
-		Content := `"欢迎关注  
-                                我的微信"`
+		Content := `"欢迎关注  我的微信"`
 		v := Request{v.ToUserName, v.FromUserName, v.CreateTime, v.MsgType, Content, v.MsgId}
 		output, err := xml.MarshalIndent(v, " ", " ")
 		if err != nil {
