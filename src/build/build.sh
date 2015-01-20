@@ -7,4 +7,5 @@ git pull
 cp -R $GOPATH/src/views $IOUT
 cp -R $GOPATH/src/conf $IOUT
 go build -o $IOUT/yxfs $GOPATH/src/main.go
-cp -R $GOPATH/src/build/start.sh $IOUT
+chmod +x $GOPATH/src/build/*.sh
+cp -R $GOPATH/src/build/*.sh $IOUT
