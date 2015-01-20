@@ -1,5 +1,5 @@
 IOUT=$1
-cd ../
+cd ../../
 GOPATH=`pwd`
 export GOPATH
 cd $GOPATH
