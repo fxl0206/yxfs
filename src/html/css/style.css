@@ -2,6 +2,7 @@
 @import "font-awesome.css";
 @import "superfish.css";
 
+/**
 @import url(//fonts.googleapis.com/css?family=BenchNine:400);
 @import url(//fonts.googleapis.com/css?family=BenchNine:300);
 @import url(//fonts.googleapis.com/css?family=BenchNine:700);
@@ -11,6 +12,7 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:600);
 @import url(//fonts.googleapis.com/css?family=Open+Sans:700);
 @import url(//fonts.googleapis.com/css?family=Open+Sans:400italic);
+**/
 html {
     width: 100%;
 
